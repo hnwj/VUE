@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h2>欢迎来到{{name}}</h2>
+    <!-- prevent阻止跳转 -->
+    <a href="http://www.baidu.com" @click.prevent="showInfo">点我提示</a>
+    <p></p>
+    <!-- 阻止事件冒泡 -->
+    <div @click="showInfo">
+      <button @click.stop="showInfo">点我提示</button>
+    </div>
+    <p></p>
+    <!-- 事件触发一次 -->
+    <button @click.once="showInfo">点我提示</button>
+    <p></p>
+    <!-- 事件的捕获模式 -->
+    <div class="box1" @click.capture="showInfo1(111)">
+      div1
+      <div class="box2" @click="showInfo1(222)">
+        div2
+      </div>
+    </div>
+
+    <!-- event.target -->
+    <div @click="showInfo">
+      <button @click="showInfo">点我提示</button>
+    </div>
+  </div>
+
+
+</body>
+<script>
+  Vue.config.productionTip = false;
+
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      name: '北京大学'
+    },
+    methods: {
+      showInfo() {
+        alert('hello')
+      },
+      showInfo1(msg) {
+        console.log(msg);
+      }
+    }
+
+  })
+</script>
+
+</html>

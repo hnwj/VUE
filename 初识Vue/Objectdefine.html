@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    let number = 19,
+    const person = {
+      name: 'tom',
+      sex: 'nan'
+    }
+    Object.defineProperty(person, 'age', {
+      // value: 20,
+      // enumerable: true,  //是否枚举 默认是false
+      // writable: true,  //是否可以更改，默认是false
+      // configurable: true //是否可以被删除
+      get: function () {
+        return number
+      },
+      set: function (value) {
+        number = value
+      }
+    })
+    console.log(person.name);
+    console.log(Object.keys(person));
+  </script>
+</body>
+
+</html>

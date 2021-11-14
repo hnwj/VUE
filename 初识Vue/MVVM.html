@@ -11,20 +11,15 @@
 
 <body>
   <div id="root">
-    <h1 style="color: blue;">hello {{name}},{{address}},{{phone}}</h1>
+    <h1>{{name}}</h1>
   </div>
 </body>
 <script>
-
-  Vue.config.productionTip = false;
-
-  //Vue实例
-  const x = new Vue({
-    el: '#root',  //指定Vue实例
+  const vm = new Vue({
+    el: '#root',
     data: {
-      name: '北京大学',
-      address: '北京',
-      phone: '123456'
+      name: 'Tom',
+      address: 'beijing'
     }
   })
 </script>

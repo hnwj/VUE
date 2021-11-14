@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 普通的写法 -->
+    单向数据绑定：<input type="text" v-bind:value="name"><br>
+    双向数据绑定：<input type="text" v-model:value="name"><br>
+    <p></p>
+    <!-- 如下的代码是错误的，v-model只能用于表单类元素上 -->
+    <!-- <h1 v-model:x="name">你好啊！</h1> -->
+
+    <!-- 语法糖的写法 -->
+    单向数据绑定：<input type="text" :value="name"><br>
+    双向数据绑定：<input type="text" v-model:value="name"><br>
+  </div>
+</body>
+<script>
+  Vue.config.productionmTip = false;
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'beijing'
+    }
+  })
+</script>
+
+</html>

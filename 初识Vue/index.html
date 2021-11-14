@@ -10,8 +10,19 @@
 </head>
 
 <body>
+  <div id="root">
+    <h1>{{name.toUpperCase()}}</h1>
+    <h1>{{address}}</h1>
+  </div>
   <script>
     Vue.config.productionTip = false;   //阻止Vue提示生产警告
+    new Vue({
+      el: '#root',
+      data: {
+        name: 'beijing',
+        address: 'China'
+      }
+    })
   </script>
 </body>
 

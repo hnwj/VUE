@@ -11,20 +11,18 @@
 
 <body>
   <div id="root">
-    <h1 style="color: blue;">hello {{name}},{{address}},{{phone}}</h1>
+    姓:<input type="text" v-model="firstName"><br>
+    名:<input type="text" v-model="lastName"><br>
+    全名：<span>{{firstName+lastName}}</span>
   </div>
 </body>
 <script>
-
   Vue.config.productionTip = false;
-
-  //Vue实例
-  const x = new Vue({
-    el: '#root',  //指定Vue实例
+  const vm = new Vue({
+    el: '#root',
     data: {
-      name: '北京大学',
-      address: '北京',
-      phone: '123456'
+      firstName: 'zhang',
+      lastName: 'san'
     }
   })
 </script>
