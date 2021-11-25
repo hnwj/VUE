@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.min.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h2>今天天气很{{info}}</h2>
+    <button @click="changeWeather">切换</button>
+    <button @click="isHot=!isHot">切换</button>
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false;
+
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      isHot: true,
+    },
+    //完整的写法
+    // watch: {
+    //   isHot: {
+    //     immediate: true,
+    //     handler(newValue, oldValue) {
+    //       console.log(this);
+    //       console.log(newValue, oldValue);
+    //     }
+    //   }
+    // },
+    //简单的写法
+    //完整的写法
+    watch: {
+      isHot(newValue, oldValue) {
+        console.log(this);
+        console.log(newValue, oldValue);
+      }
+    },
+    computed: {
+      info() {
+        return this.isHot ? '炎热' : '凉爽'
+      }
+    },
+    methods: {
+      changeWeather() {
+        this.isHot = !this.isHot
+      }
+    },
+
+  })
+  //完整的写法
+  //监视isHot的变化
+  // vm.$watch('isHot', {
+  //   immediate: true,//初始化让handler调用一下
+  //   handler(newValue, oldValue) {
+  //     console.log(newValue, oldValue);
+  //   }
+  // })
+
+  //简单的写法
+  vm.$watch('isHot', function (newValue, oldValue) {
+    console.log(newValue, oldValue);
+  })
+</script>
+
+</html>

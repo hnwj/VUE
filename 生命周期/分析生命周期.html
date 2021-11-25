@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="root">
+      <h1>欢迎学习Vue！</h1>
+      <h1>{{num}}</h1>
+      <button @click="add">点我加1</button>
+      <button @click="destroy">点击销毁vm</button>
+    </div>
+  </body>
+  <script>
+    Vue.config.productionTip = false;
+    new Vue({
+      el: "#root",
+      data: {
+        num: 1,
+      },
+      methods: {
+        add() {
+          this.num++;
+        },
+        destroy() {
+          this.$destroy();
+        },
+      },
+
+      beforeCreate() {
+        console.log("beforeCreate");
+        console.log(this);
+        // debugger;
+      },
+      create() {
+        console.log("create");
+      },
+      beforeMount() {
+        console.log("beforeMount");
+        console.log(this);
+        // debugger
+      },
+      //Vue完成模板解析并把真实的DOM放入页面,页面挂载
+      mounted() {
+        console.log("mounted");
+        console.log(this);
+        // debugger
+      },
+      beforeUpdate() {
+        console.log("beforeUpdate");
+        console.log(this.num);
+        // debugger
+      },
+      updated() {
+        console.log("updated");
+      },
+
+      //此处的数据不再更新，都是可以读取数据
+      beforeDestroy() {
+        console.log("beforeDestroy");
+        console.log(this.num);
+      },
+      destroyed() {
+        console.log("destroyed");
+      },
+    });
+  </script>
+</html>

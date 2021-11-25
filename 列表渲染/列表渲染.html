@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 遍历数组 -->
+    <h1>人员列表</h1>
+    <ul>
+      <!-- <li v-for="(p,index) in person" :key="index"> -->
+      <li v-for="(p,index) of person" :key="index">
+        {{index}}--{{p.name}}--{{p.age}}
+      </li>
+    </ul>
+    <!-- 遍历对象 -->
+    <h1>汽车信息</h1>
+    <ul>
+      <li v-for="(value,k) of car" :key="k">
+        {{k}}--{{value.name}}--{{value.price}}--{{value.color}}
+      </li>
+    </ul>
+    <!-- 遍历字符串 -->
+    <h1>测试字符串</h1>
+    <ul>
+      <li v-for="(char,index) of str" :key="index">
+        {{index}}--{{char}}
+      </li>
+    </ul>
+    <!-- 遍历指定次数 -->
+    <h1>指定遍历次数</h1>
+    <ul>
+      <li v-for="(a,b) of 5">
+        {{a}}--{{b}}
+      </li>
+    </ul>
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false
+  new Vue({
+    el: '#root',
+    data: {
+      person: [
+        { name: '张三', id: '01', age: 18 },
+        { name: '李四', id: '02', age: 15 },
+        { name: '王五', id: '03', age: 19 }
+      ],
+      car: { name: '宝马', price: 1200, color: '黑色' },
+      str: 'hello world'
+    }
+  })
+</script>
+
+</html>

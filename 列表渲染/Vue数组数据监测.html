@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>学校信息</h1>
+    <h2>{{school.name}}</h2>
+    <h2>{{school.address}}</h2>
+    <h2>{{school.leader}}</h2>
+    <hr>
+    <h1>学生信息</h1>
+    <h2>学生姓名：{{student.name}}</h2>
+    <h2>学生年龄：{{student.age}}</h2>
+    <h2>学生性别：{{student.sex}}</h2>
+    <h2>学生爱好</h2>
+    <ul>
+      <li v-for="(p,index) in student.hobby" :key="index">
+        {{index}}--{{p}}
+      </li>
+    </ul>
+    <button @click="addSex">点我添加sex属性</button>
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      school: {
+        name: '北京大学',
+        address: '北京市朝阳区',
+      },
+      student: {
+        name: 'Tom',
+        age: 18,
+        hobby: [
+          '跑步', '游泳', '打篮球'
+        ]
+      }
+    },
+    methods: {
+      addSex() {
+        // Vue.set(this.student, 'sex', '男')
+        vm.$set(this.student, 'sex', '女')
+      }
+    }
+  })
+</script>
+
+</html>

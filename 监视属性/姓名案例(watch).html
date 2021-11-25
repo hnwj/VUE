@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>姓名案例(watch)</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    姓:<input type="text" v-model="firstName"><br>
+    名:<input type="text" v-model="lastName"><br>
+    全名：<span>{{fullName}}</span>
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false;
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      firstName: 'zhang',
+      lastName: 'san',
+      fullName: 'zhang' + '-' + 'san'
+    },
+    //简写
+    watch: {
+      firstName(newValue) {
+        //在watch中可以使用计时器，在computed不可以使用
+        setTimeout(() => {
+          this.fullName = newValue + '-' + this.lastName
+        }, 1000);
+      },
+      lastName(newValue) {
+        this.fullName = this.firstName + '-' + newValue
+      }
+    }
+
+  })
+</script>
+
+</html>

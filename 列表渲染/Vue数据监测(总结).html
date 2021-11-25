@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>学生信息</h1>
+    <button @click.once="student.age++">年龄加1</button>
+    <button @click="addSex">点我添加sex属性</button>
+    <button @click="student.sex='男'">修改性别属性，默认值：男</button>
+    <button @click="addFriend">在列表首位添加一个朋友</button>
+    <button @click="updateFriend">修改第一个朋友的名字</button>
+    <button @click="addHobby">添加一个爱好</button>
+    <button @click="changeHobby">修改第一个爱好：开车</button>
+    <button @click="removeHobby">去除打篮球</button>
+    <hr>
+    <h2>学生姓名：{{student.name}}</h2>
+    <h2>学生年龄：{{student.age}}</h2>
+    <h2 v-if="student.sex">学生性别：{{student.sex}}</h2>
+    <h2>学生爱好</h2>
+    <ul>
+      <li v-for="(p,index) in student.hobby" :key="index">
+        {{index}}--{{p}}
+      </li>
+    </ul>
+    <h2>朋友信息</h2>
+    <ul>
+      <li v-for="(p,index) of student.friends" :key="index">
+        {{index}}--{{p.name}}--{{p.age}}
+      </li>
+    </ul>
+
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      student: {
+        name: 'Tom',
+        age: 18,
+        hobby: [
+          '跑步', '游泳', '打篮球'
+        ],
+        friends: [
+          { name: 'Tom', age: 18 },
+          { name: 'Jack', age: 28 },
+          { name: 'Rose', age: 20 }
+        ]
+      }
+    },
+    methods: {
+      addSex() {
+        // Vue.set(this.student, 'sex', '男')
+        vm.$set(this.student, 'sex', '女')
+      },
+      addFriend() {
+        this.student.friends.unshift({ name: 'jeery', age: 20 })
+      },
+      updateFriend() {
+        this.student.friends[0].name = "张三"
+      },
+      addHobby() {
+        this.student.hobby.unshift('学习英语')
+      },
+      changeHobby() {
+        // this.student.hobby.splice(0, 1, '开车')
+        vm.$set(this.student.hobby, 0, '开车')
+      },
+      removeHobby() {
+        this.student.hobby = this.student.hobby.filter((h) => {
+          return h != '打篮球'
+        })
+      }
+    }
+  })
+</script>
+
+</html>

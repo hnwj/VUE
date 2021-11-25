@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>人员列表</h1>
+    <ul>
+      <li v-for="(p,index) of person" :key="index">
+        {{index}}--{{p.name}}--{{p.age}}
+      </li>
+    </ul>
+    <button @click.once="add">点我添加汤姆</button>
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      person: [
+        { name: '张三', age: 20, id: '01' },
+        { name: '李四', age: 21, id: '02' },
+        { name: '王五', age: 22, id: '03' }
+      ]
+    },
+    methods: {
+      add() {
+        const p = { name: '汤姆', age: 25,id: '04'}
+        this.person.unshift(p)
+      }
+    },
+  })
+</script>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 遍历数组 -->
+    <h1>人员列表</h1>
+    <button @click="changeMei">点我更新马冬梅</button>
+    <ul>
+      <!-- <li v-for="(p,index) in person" :key="index"> -->
+      <li v-for="(p,index) of person" :key="p.id">
+        {{index}}--{{p.name}}--{{p.age}}--{{p.sex}}
+      </li>
+    </ul>
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false
+
+  //  new Vue({
+  //   el: '#root',
+  //   data: {
+  //     keyWord: '',
+  //     person: [
+  //       { name: '周杰伦', id: '01', age: 18, sex: '男' },
+  //       { name: '温兆伦', id: '02', age: 15, sex: '男' },
+  //       { name: '周冬雨', id: '03', age: 19, sex: '女' },
+  //       { name: '马冬梅', id: '04', age: 19, sex: '女' }
+  //     ],
+  //     filterPerson: []
+  //   },
+  //   watch: {
+  //     keyWord: {
+  //       immediate: true,
+  //       handler(val) {
+  //         this.filterPerson = this.person.filter((p) => {
+  //           return p.name.indexOf(val) !== -1;
+  //         })
+  //       }
+  //     }
+  //   }
+  // })
+
+
+  //用computed实现
+  new Vue({
+    el: '#root',
+    data: {
+      keyWord: '',
+      sortType: 0,
+      person: [
+        { name: '周杰伦', id: '01', age: 18, sex: '男' },
+        { name: '温兆伦', id: '02', age: 15, sex: '男' },
+        { name: '周冬雨', id: '03', age: 19, sex: '女' },
+        { name: '马冬梅', id: '04', age: 20, sex: '女' }
+      ],
+    },
+    methods: {
+      changeMei() {
+        // this.person[0].name = '马大云',//奏效
+        //   this.person[0].age = 56,//奏效
+        //   this.person[0].sex = '男'//奏效
+        this.person[0] = { name: '马小云', id: '01', age: 56, sex: '男' }
+      }
+    },
+
+  })
+</script>
+
+</html>

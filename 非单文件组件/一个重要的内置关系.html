@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <school></school>
+  </div>
+</body>
+<script>
+  Vue.config.productionTip = false;
+  Vue.prototype.x = 55;
+
+  const school = Vue.extend({
+    name: "school",
+    template: `
+      <div>
+        <h1>{{name}}</h1>
+        <h1>{{address}}</h1>
+        <button @click="showX">点我试试</button>
+      </div>
+        `,
+    data() {
+      return {
+        name: "北京大学",
+        address: "北京市",
+      };
+    },
+    methods: {
+      showX() {
+        console.log(this);
+        console.log(this.x);
+      },
+    },
+  });
+
+  new Vue({
+    el: "#root",
+    data: {
+      msg: "你好，Vue！",
+    },
+    components: {
+      school,
+    },
+  });
+</script>
+
+</html>

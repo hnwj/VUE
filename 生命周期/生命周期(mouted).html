@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1 :style="{opacity}">欢迎学习Vue！</h1>
+  </div>
+</body>
+<script>
+
+  Vue.config.productionTip = false
+  new Vue({
+    el: '#root',
+    data: {
+      opacity: 1
+    },
+    methods: {
+
+    },
+    //Vue完成模板解析并把真实的DOM放入页面,页面挂载
+    mounted() {
+      console.log('mouted');
+      setInterval(() => {
+        this.opacity -= 0.01
+        if (this.opacity <= 0) this.opacity = 1
+      }, 16);
+    },
+  })
+
+  //通过外部的定时器实现
+  //生命周期函数中的this是vm或组件实例对象
+  // setInterval(() => {
+  //   vm.opacity -= 0.01
+  //   if (vm.opacity <= 0) vm.opacity = 1
+  // }, 16);
+</script>
+
+</html>
