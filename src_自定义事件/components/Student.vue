@@ -28,10 +28,11 @@ export default {
       //触发student组件上的
       this.$emit("atiguigu", this.name, 100, 200, 300);
       this.$emit("test");
+      this.$emit("demo")
     },
     unbind() {
       // this.$off('atiguigu') //解绑一个自定义事件
-      // this.$off(['atiguigu','test1'])
+      // this.$off(['atiguigu','test1'])   //解绑多个事件
       this.$off(); //所有的事件被解绑
     },
     death() {

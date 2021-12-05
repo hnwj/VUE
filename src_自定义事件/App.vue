@@ -8,7 +8,8 @@
     <Student @atiguigu="getStudentName" @test="test1"></Student>
 
     <!-- 通过父组件给子组件绑定一个自定义事件实现，子给父传递数据，使用ref -->
-    <!-- <Student ref="student"></Student> -->
+    <!-- @click.navtive是原生事件，native是标识原生  -->
+    <!-- <Student ref="student" @click.native="demo"></Student> -->
   </div>
 </template>
 
@@ -27,6 +28,9 @@ export default {
     },
     test1() {
       console.log("test!!!!");
+    },
+    demo() {
+      alert("hello!!!");
     },
   },
   mounted() {
